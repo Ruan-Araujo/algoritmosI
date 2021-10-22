@@ -1,6 +1,6 @@
-package SelectionSort;
+package AlgoritmosOrdenacao;
 
-public class TestaOrdenacao {
+public class SelectionSort {
 
     private static int buscaMenor(Produto[] produtos, int inicio, int termino) {
 
@@ -14,24 +14,28 @@ public class TestaOrdenacao {
         return maisBarato;
     }
 
-    private static void ordena(Produto[] produtos, int quantidadeElementos) {
+    private static void selectionSort(Produto[] produtos, int quantidadeElementos) {
 
         for (int atual = 0; atual < quantidadeElementos - 1; atual++) {
 
-            System.out.println("Estou na casinha " + atual);
+            System.out.println("Estou no índice " + atual);
 
             int menor = buscaMenor(produtos, atual, quantidadeElementos - 1);
 
             System.out.println("Trocando " + atual + " com o " + menor);
 
-            Produto produtoAtual = produtos[atual];
-            Produto produtoMenor = produtos[menor];
-
-            System.out.println("Trocando " + produtoAtual.getNome() + " com " + produtoMenor.getNome());
-
-            produtos[atual] = produtoMenor;
-            produtos[menor] = produtoAtual;
+            troca(produtos, atual, menor);
         }
+    }
+
+    private static void troca(Produto[] produtos, int primeiro, int segundo) {
+
+        System.out.println("Estou trocando " + primeiro + " com " + segundo);
+        Produto primeiroProduto = produtos[primeiro];
+        Produto segundoProduto = produtos[segundo];
+        System.out.println("Estou trocando " + primeiroProduto.getNome() + " com " + segundoProduto.getNome());
+        produtos[primeiro] = segundoProduto;
+        produtos[segundo] = primeiroProduto;
     }
 
     public static void main(String[] args) {
@@ -44,7 +48,7 @@ public class TestaOrdenacao {
                     new Produto("Fusca", 16000.01)
             };
 
-            ordena(produtos, produtos.length);
+            selectionSort(produtos, produtos.length);
 
             for(Produto produto : produtos) {
                 System.out.println(produto.getNome() + " custa " + produto.getPreco());

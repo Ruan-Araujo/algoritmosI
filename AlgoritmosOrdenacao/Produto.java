@@ -1,4 +1,4 @@
-package SelectionSort;
+package AlgoritmosOrdenacao;
 
 public class Produto {
 
